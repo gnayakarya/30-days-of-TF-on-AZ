@@ -1,0 +1,720 @@
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git remote add origin https://github.com/gnayakarya/30-days-of-TF-on-AZ.git
+error: remote origin already exists.
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git push -u origin main
+error: src refspec main does not match any
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   conditionalexpression/main.tf     
+        new file:   conditionalexpression/variables.tf
+        new file:   countindex/main.tf
+        new file:   countlist/main.tf
+        new file:   countlist/variables.tf
+        new file:   datasource/main.tf
+        new file:   day2-provider-versioning/main.tf  
+        new file:   day2/main.tf
+        new file:   element-function/main.tf
+        new file:   element-function/variables.tf     
+        new file:   emptyvar/main.tf
+        new file:   emptyvar/var.tf
+        new file:   first_demo/main.tf
+        new file:   foreachmap/main.tf
+        new file:   foreachmap/variables.tf
+        new file:   linux-vm-full-example/main.tf     
+        new file:   linux-vm-full-example/variables.tf
+        new file:   linux/main.tf
+        new file:   list/main.tf
+        new file:   list/variables.tf
+        new file:   local-exec/main.tf
+        new file:   localvars/main.tf
+        new file:   lookup-function/main.tf
+        new file:   lookup-function/variables.tf
+        new file:   map/main.tf
+        new file:   map/variables.tf
+        new file:   modules/call_module/.terraform/modules/modules.json
+        new file:   modules/call_module/main.tf
+        new file:   modules/winvm/main.tf
+        new file:   modules/winvm/variables.tf
+        new file:   pip/main.tf
+        new file:   remote-exec/main.tf
+        new file:   second_demo/main.tf
+        new file:   storageaccount/main.tf
+        new file:   tfvars/main.tf
+        new file:   tfvars/terraform.tfvars
+        new file:   tfvars/var.tf
+        new file:   truncated_output.txt
+        new file:   var/main.tf
+        new file:   var/var.tf
+        new file:   webapp/main.tf
+        new file:   win/main.tf
+        new file:   win2/main.tf
+        new file:   zipmap-function/main.tf
+
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git branch -b
+error: unknown switch `b'
+usage: git branch [<options>] [-r | -a] [--merged] [--no-merged]
+   or: git branch [<options>] [-f] [--recurse-submodules] <branch-name> [<start-point>]
+   or: git branch [<options>] [-l] [<pattern>...]
+   or: git branch [<options>] [-r] (-d | -D) <branch-name>...
+   or: git branch [<options>] (-m | -M) [<old-branch>] <new-branch>
+   or: git branch [<options>] (-c | -C) [<old-branch>] <new-branch>
+   or: git branch [<options>] [-r | -a] [--points-at]
+   or: git branch [<options>] [-r | -a] [--format]
+
+Generic options
+    -v, --verbose         show hash and subject, give twice for upstream branch
+    -q, --quiet           suppress informational messages
+    -t, --track[=(direct|inherit)]
+                          set branch tracking configuration
+    -u, --set-upstream-to <upstream>
+                          change the upstream info
+    --unset-upstream      unset the upstream info
+    --color[=<when>]      use colored output
+    -r, --remotes         act on remote-tracking branches
+    --contains <commit>   print only branches that contain the commit
+    --no-contains <commit>
+                          print only branches that don't contain the commit
+    --abbrev[=<n>]        use <n> digits to display object names
+
+Specific git-branch actions:
+    -a, --all             list both remote-tracking and local branches
+    -d, --delete          delete fully merged branch
+    -D                    delete branch (even if not merged)
+    -m, --move            move/rename a branch and its reflog
+    -M                    move/rename a branch, even if target exists
+    -c, --copy            copy a branch and its reflog
+    -C                    copy a branch, even if target exists
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ pwd
+/d/practice_terraform
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git init -b main
+warning: re-init: ignored --initial-branch=main
+Reinitialized existing Git repository in D:/practice_terraform/.git/
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git add .
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git commit -m "First commit"
+[main (root-commit) 0f4c6aa] First commit
+ 45 files changed, 2203 insertions(+)
+ create mode 100644 TF version upgrade using choco.txt
+ create mode 100644 conditionalexpression/main.tf     
+ create mode 100644 conditionalexpression/variables.tf
+ create mode 100644 countindex/main.tf
+ create mode 100644 countlist/main.tf
+ create mode 100644 countlist/variables.tf
+ create mode 100644 datasource/main.tf
+ create mode 100644 day2-provider-versioning/main.tf  
+ create mode 100644 day2/main.tf
+ create mode 100644 element-function/main.tf
+ create mode 100644 element-function/variables.tf
+ create mode 100644 emptyvar/main.tf
+ create mode 100644 emptyvar/var.tf
+ create mode 100644 first_demo/main.tf
+ create mode 100644 foreachmap/main.tf
+ create mode 100644 foreachmap/variables.tf
+ create mode 100644 linux-vm-full-example/main.tf
+ create mode 100644 linux-vm-full-example/variables.tf
+ create mode 100644 linux/main.tf
+ create mode 100644 list/main.tf
+ create mode 100644 list/variables.tf
+ create mode 100644 local-exec/main.tf
+ create mode 100644 localvars/main.tf
+ create mode 100644 lookup-function/main.tf
+ create mode 100644 lookup-function/variables.tf
+ create mode 100644 map/main.tf
+ create mode 100644 map/variables.tf
+ create mode 100644 modules/call_module/.terraform/modules/modules.json
+ create mode 100644 modules/call_module/main.tf
+ create mode 100644 modules/winvm/main.tf
+ create mode 100644 modules/winvm/variables.tf
+ create mode 100644 pip/main.tf
+ create mode 100644 remote-exec/main.tf
+ create mode 100644 second_demo/main.tf
+ create mode 100644 storageaccount/main.tf
+ create mode 100644 tfvars/main.tf
+ create mode 100644 tfvars/terraform.tfvars
+ create mode 100644 tfvars/var.tf
+ create mode 100644 truncated_output.txt
+ create mode 100644 var/main.tf
+ create mode 100644 var/var.tf
+ create mode 100644 webapp/main.tf
+ create mode 100644 win/main.tf
+ create mode 100644 win2/main.tf
+ create mode 100644 zipmap-function/main.tf
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git remote add origin https://github.com/gnayakarya/30-days-of-TF-on-AZ.git
+error: remote origin already exists.
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git push origin main
+info: please complete authentication in your browser...
+
+
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git init
+Reinitialized existing Git repository in D:/practice_terraform/.git/
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git add .
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git commit -m "First commit"
+On branch main
+nothing to commit, working tree clean
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git remote add origin https://github.com/gnayakarya/30-days-of-TF-on-AZ.git
+error: remote origin already exists.
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git remove -v
+git: 'remove' is not a git command. See 'git --help'.
+
+The most similar command is
+        remote
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git remote -v
+origin  https://github.com/gnayakarya/30-days-of-TF-on-AZ.git (fetch)
+origin  https://github.com/gnayakarya/30-days-of-TF-on-AZ.git (push)
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git push origin master
+error: src refspec master does not match any
+error: failed to push some refs to 'https://github.com/gnayakarya/30-days-of-TF-on-AZ.git'
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ git push origin main
+To https://github.com/gnayakarya/30-days-of-TF-on-AZ.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/gnayakarya/30-days-of-TF-on-AZ.git'
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$ history
+   23  vagrant destroy -f
+   24  vagrant status
+   25  vagrant up
+   26  vagrant ssh
+   27  vagrant reload
+   28  vagrant status
+   29  vagrant up
+   30  vagrant status
+   31  exit
+   32  cd ~/devops/provision/vagrant/ubuntu
+   33  vagrant status
+   34  code Vagrantfile
+   35  vagrant up
+   36  vagrant up
+   37  vagrant up
+   38  vagrant halt
+   39  vagrant status
+   40  vagrant up
+   41  vagrant ssh
+   42  vagrant reload
+   43  vagrant halt
+   44  vagrant status
+   45  vagrant destroy -f
+   46  vagrant status
+   47  exit
+   48  cd ~
+   49  cd devops/provision/vagrant/ubuntu
+   50  code Vagrantfile
+   51  vagrant status
+   52  vagrant up
+   53  cd ..
+   54  mkdir data
+   55  pwd
+   56  cd data
+   57  touch new{[..10]
+   58  ls
+   59  touch new[..10]
+   60  ls
+   61  touch new[1..10]
+   62  ls
+   63  pwd
+   64  rm -r
+   65  rm *
+   66  ls
+   67  touch hostfile1 hostfile2
+   68  ls
+   69  ls
+   70  cd ..
+   71  cd ubuntu
+   72  vagrant status
+   73  vagrant up
+   74  vagrant status
+   75  vagrant ssh
+   76  vagrant reload
+   77  vagrant status
+   78  vagrant ssh
+   79  cd ..
+   80  cd data
+   81  ls
+   82  vagrant status
+   83  vagrant reload
+   84  cd ..
+   85  cd ubuntu
+   86  vagrant status
+   87  ls
+   88  vagrant reload
+   89  vagrant ssh
+   90  exit
+   91  cd ~
+   92  cd devops
+   93  ls
+   94  cd provision
+   95  ls
+   96  cd vagrant
+   97  ls
+   98  cd ubuntu
+   99  code Vagrantfile
+  100  cd ..
+  101  mkdir apachelynx
+  102  ls
+  103  cd apachelynx
+  104  pwd
+  105  vagrant init pkpatel001/apachelynx
+  106  vagrant up
+  107  vagrant status
+  108  vagrant up
+  109  vagrant --help
+  110  vagrant --version
+  111  vagrant box list
+  112  pwd
+  113  cd ..
+  114  cd ubuntu
+  115  pwd
+  116  ls
+  117  vagrant up
+  118  vagrant box add customimage package.box
+  119  vagrant box list
+  120  cd ..
+  121  mkdir custom
+  122  cd custom
+  123  vagrant init customimage
+  124  cd ..
+  125  mv ubuntu newubuntu
+  126  cd ..
+  127  cd custom
+  128  cd vagrant
+  129  cd vustom
+  130  cd custom
+  131  ls
+  132  vagrant up
+  133  code Vagrantfile
+  134  vagrant status
+  135  vagrant up
+  136  vagrant destroy -f
+  137  vagrant status
+  138  vagrant up
+  139  cd ..
+  140  cd centos
+  141  ls
+  142  vagrant up
+  143  vagrant ssh
+  144  vagrant package
+  145  ls
+  146  vagrant box list
+  147  vagrant box add mybox package.box
+  148  vagrant box list
+  149  cd ..
+  150  ls
+  151  mv centos newcentos
+  152  ls
+  153  mkdir mybox
+  154  cd mybox
+  155  ls
+  156  vagrant init mybox
+  157  vagrant up
+  158  vagrant ssh
+  159  ls
+  160  cd ..
+  161  cd centos
+  162  ls
+  163  cd newcentos
+  164  ls
+  165  cd ..
+  166  ls
+  167  cd newubuntu
+  168  ls
+  169  vagrant box list
+  170  cd ..
+  171  mkdir bionic
+  172  cd bionic
+  173  vagrant init ubuntu/bionic64
+  174  vagrant up
+  175  vagrant up
+  176  vagrant halt
+  177  pwd
+  178  ls
+  179  cat *.log
+  180  cd ..
+  181  ls
+  182  ls
+  183  cd custom
+  184  ls
+  185  vagrant up
+  186  vagrant status
+  187  exit
+  188  cd ~
+  189  cd devops
+  190  cd provision
+  191  ls
+  192  cd docker
+  193  ls
+  194  vagrant ssh
+  195  exit
+  196  cd ~
+  197  cd devops/provision/docker
+  198  ls
+  199  vagrant up
+  200  vagrant halt
+  201  vagrant startus
+  202  vagrant status
+  203  vagrant up
+  204  vagrant reload
+  205  vagrant halt
+  206  vagrant up
+  207  vagrant status
+  208  vagrant reload
+  209  vagrant reload
+  210  vagrant halt
+  211  vgarant status
+  212  ls
+  213  vagrant status
+  214  vagrant up
+  215  vagrant ssh
+  216  vagrant halt
+  217  vagrant status
+  218  exit
+  219  cd ~
+  220  cd devops/provision/vagrant/ubuntu
+  221  cd devops/provision/vagrant/bionic
+  222  ls
+  223  code Vagrantfile
+  224  vagrant box list
+  225  code Vagrantfile
+  226  vagrant destroy -f
+  227  vagrant up
+  228  vagrant status
+  229  vagrant reload
+  230  vagrant ssh
+  231  vagrant halt
+  232  vagrant status
+  233  vagrant status
+  234  vagrant up
+  235  vagrant ssh
+  236  vagrant status
+  237  vagrant stop
+  238  vagrant halt
+  239  vagrant status
+  240  exit
+  241  cd ~/devops/provision/vagrant/
+  242  ls
+  243  cd bionic
+  244  vagrant box list
+  245  code Vagrantfile
+  246  vagrant status
+  247  vagrant up
+  248  vagrant status
+  249  exit
+  250  cd ~/devops/provision/vagrant/bionic/
+  251  vagrant destroy -f -debug
+  252  vagrant destroy -f --debug
+  253  vagrant plugin --help
+  254  vagrant plugin list
+  255  vagrant plugin command -h
+  256  vagrant plugin destroy -h
+  257  vagrant plugin destroy
+  258  vagrant plugin destroy list
+  259  vagrant plugin "vagrant destroy"
+  260  vagrant plugin list
+  261  vagrant up -debug
+  262  vagrant up --debug
+  263  vagrant status
+  264  cd ..
+  265  cd ..
+  266  cd kubernetes/
+  267  ls
+  268  clear
+  269  cd ..
+  270  cd vagrant/
+  271  cd bionic/
+  272  ls
+  273  cls
+  274  cls
+  275  clear
+  276  ls
+  277  code Vagrantfile
+  278  vagrant status
+  279  clear
+  280  date
+  281  vagrant status
+  282  vagrant ssh
+  283  vagrant haltt
+  284  vagrant halt
+  285  vagrant status
+  286  exit
+  287  cd ~/devops/provision/vagrant/bionic/
+  288  ls
+  289  vagrant status
+  290  vagrant up
+  291  vagrant ssh
+  292  exit
+  293  cd ~/devops/provision/vagrant/bionic/
+  294  vagrant status
+  295  vagrant up
+  296  vagrant up
+  297  vagrant destroy -f
+  298  vagrant up
+  299  vagrant status
+  300  vagrant ssh
+  301  exit
+  302  cd ~/devops/provision/vagrant/bi
+  303  cd ~/devops/provision/vagrant/bionic/
+  304  vagrant destroy -f
+  305  vagrant status
+  306  vagrant up
+  307  vagrant ssh
+  308  exit
+  309  cd ~/devops/provision/vagrant/bionic/
+  310  vagrant ssh
+  311  exit
+  312  cd ~/devops/provision/vagrant/bionic/
+  313  ls
+  314  vagrant status
+  315  vagrant destroy -f
+  316  vagrant up
+  317  vagrant ssh
+  318  vagrant reload
+  319  vagrant ssh
+  320  exit
+  321  cd ~/devops/provision/vagrant/bionic/
+  322  ls
+  323  vagrant status
+  324  vagrant up
+  325  vagrant ssh
+  326  cat Vagrantfile
+  327  code Vagrantfile
+  328  rm Vagrantfile
+  329  ls
+  330  wget https://github.com/gnayakarya/GNAYAK-Training/blob/main/Vagrantfile_additionaldisk_lab_practice Vagrantfile
+  331  ls
+  332  mv Vagrantfile_additionaldisk_lab_practice Vagrantfile
+  333  ls
+  334  code Vagrantfile
+  335  code Vagrantfile
+  336  wget https://raw.githubusercontent.com/gnayakarya/GNAYAK-Training/main/Vagrantfile_additionaldisk_lab_practice
+  337  rm Vagrantfile
+  338  ls
+  339  mv Vagrantfile_additionaldisk_lab_practice Vagrantfile
+  340  code Vagrantfile
+  341  vagrant list plugins
+  342  vagrant plugin list
+  343  cat Vagrantfile
+  344  vagrant destroy -f
+  345  vagrant status
+  346  vagrant up
+  347  vagrant status
+  348  vagrant ssh
+  349  vagrant reload
+  350  vagrant ssh
+  351  exit
+  352  exit
+  353  cd ~/devops/provision/vagrant/bionic/
+  354  ls
+  355  rm Vagrantfile
+  356  vagrant box list
+  357  vagrant init  ubuntu/bionic64 --force
+  358  code Vagrantfile
+  359  vagrant up
+  360  vagrant status
+  361  vagrant destory -f
+  362  vagrant status
+  363  vagrant halt
+  364  vagrant status
+  365  vagrant destroy
+  366  vagrant status
+  367  clear
+  368  vagrant up
+  369  vagrant status
+  370  vagrant ssh
+  371  vagrant destroy -f
+  372  vagrant status
+  373  ls
+  374  rm Vagrantfile
+  375  wget -O Vagrantfile https://raw.githubusercontent.com/gnayakarya/GNAYAK-Training/main/Vagrantfile_additionaldisk_lab_practice
+  376  ls
+  377  code Vagrantfile
+  378  vagrant up
+  379  vagrant ssh
+  380  nano /?
+  381  exit
+  382  cd ~/devops/provision/vagrant/bionic/
+  383  vagrant status
+  384  vagrant destroy -f
+  385  vagrant status
+  386  vagrant global status
+  387  vagrant global-status
+  388  clear
+  389  code Vagrantfile
+  390  vagrant up
+  391  vagrant ssh
+  392  vagrant reload
+  393  vagrant ssh
+  394  vagrant destroy -f
+  395  ls
+  396  code Vagrantfile
+  397  vagrant box list
+  398  rm Vagrantfile
+  399  vagrant init --help
+  400  vagrant init hashicorp/bionic64 --force
+  401  code Vagrantfile
+  402  clear
+  403  vagrant status
+  404  vagrant up
+  405  vagrant ssh
+  406  vagrant destroy -f
+  407  exit
+  408  git --help
+  409  git -help a
+  410  git
+  411  c:
+  412  c:dir
+  413  exit
+  414  df -hT
+  415  mount
+  416  cat /proc/partitions
+  417  cd ~/devops/provision/vagrant/bionic/
+  418  ls
+  419  vagrant status
+  420  vagrant destroy -f
+  421  vagrant up
+  422  vagrant ssh
+  423  vagrant destroy -f
+  424  clear
+  425  vagrant up
+  426  vagrant ssh
+  427  vagrant destroy -f
+  428  ls
+  429  code Vagrantfile
+  430  vagrant up
+  431  vagrant ssh
+  432  vagrant halt
+  433  vagrant destroy -f
+  434  ifconfig
+  435  code Vagrantfile
+  436  vagrant up
+  437  vagrant ssh
+  438  exit
+  439  cd ~
+  440  cd devops
+  441  ls
+  442  cd coding
+  443  ls
+  444  cd ..
+  445  cd release
+  446  pwd
+  447  ls
+  448  cd jenkins
+  449  pwd
+  450  git clone https://github.com/praveen1994dec/Docker_Setup
+  451  ls
+  452  cd Docker_Setup/
+  453  LS
+  454  CD .
+  455  cd .
+  456  ls
+  457  ./explorer
+  458  pwd
+  459  ls
+  460  exit
+  461  cd ~
+  462  cd devops
+  463  ls
+  464  cd release
+  465  ls
+  466  cd jenkins
+  467  ls
+  468  cd Docker_Setup/
+  469  ls
+  470  docker-compose up
+  471  services.msc
+  472  exit
+  473  cd ~
+  474  cd devops
+  475  cd release
+  476  cd jenkins
+  477  ls
+  478  cd Docker_Setup/
+  479  ls
+  480  docker-cli -version
+  481  docker -version
+  482  docker -v
+  483  dockercli -v
+  484  docker-cli -v
+  485  docker-compose -v
+  486  ls
+  487  docker-compose up
+  488  exit
+  489  cd ~
+  490  cd devops
+  491  cd release
+  492  ls
+  493  cd jenkins
+  494  ls
+  495  clear
+  496  vagrant box list
+  497  vagrant init ubuntu/bionic64
+  498  leafpag  Vagrantfile
+  499  leafpad Vagrantfile
+  500  exit
+  501  clear
+  502  pwd
+  503  git init -b main
+  504  git add .
+  505  git commit -m "First commit"
+  506  git remote add origin https://github.com/gnayakarya/30-days-of-TF-on-AZ.git
+  507  git push origin main
+  508  git push origin main
+  509  git push origin main
+  510  clear
+  511  git init
+  512  git add .
+  513  git commit -m "First commit"
+  514  git remote add origin https://github.com/gnayakarya/30-days-of-TF-on-AZ.git
+  515  git remove -v
+  516  git remote -v
+  517  git push origin master
+  518  git push origin main
+  519  gh repo clone gnayakarya/30-days-of-TF-on-AZ
+  520  git push -u -f origin main
+  521  clear
+  522  history
+
+Gaurav@DESKTOP-NF0FS2B MINGW64 /d/practice_terraform (main)
+$
