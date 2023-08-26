@@ -1,0 +1,924 @@
+      + patch_mode                 = "AutomaticByOS"
+      + platform_fault_domain      = -1
+      + priority                   = "Regular"
+      + private_ip_address         = (known after apply)
+      + private_ip_addresses       = (known after apply)
+      + provision_vm_agent         = true
+      + public_ip_address          = (known after apply)
+      + resource_group_name        = "rg1-123"
+      + size                       = "Standard_F2"
+      + virtual_machine_id         = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "WindowsServer"
+          + publisher = "MicrosoftWindowsServer"
+          + sku       = "2016-Datacenter"
+          + version   = "latest"
+        }
+    }
+
+Plan: 6 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------------------------------------------------------------------------ 
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform   
+apply" now.
+PS D:\practice_terraform\modules\call_module> terraform apply --auto-approve
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols: 
+  + create
+
+Terraform will perform the following actions:
+
+  # module.call_module.azurerm_network_interface.mynic will be created
+  + resource "azurerm_network_interface" "mynic" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "westus"
+      + mac_address                   = (known after apply)
+      + name                          = "example-nic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "rg1-123"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + public_ip_address_id                               = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # module.call_module.azurerm_public_ip.example will be created
+  + resource "azurerm_public_ip" "example" {
+      + allocation_method       = "Static"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "westus"
+      + name                    = "acceptanceTestPublicIp1"
+      + resource_group_name     = "rg1-123"
+      + sku                     = "Basic"
+      + sku_tier                = "Regional"
+    }
+
+  # module.call_module.azurerm_resource_group.example will be created
+  + resource "azurerm_resource_group" "example" {
+      + id       = (known after apply)
+      + location = "westus"
+      + name     = "rg1-123"
+    }
+
+  # module.call_module.azurerm_subnet.mysubnet will be created
+  + resource "azurerm_subnet" "mysubnet" {
+      + address_prefixes                               = [
+          + "10.0.2.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "internal"
+      + resource_group_name                            = "rg1-123"
+      + virtual_network_name                           = "example-network"
+    }
+
+  # module.call_module.azurerm_virtual_network.example will be created
+  + resource "azurerm_virtual_network" "example" {
+      + address_space       = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "westus"
+      + name                = "example-network"
+      + resource_group_name = "rg1-123"
+      + subnet              = (known after apply)
+    }
+
+  # module.call_module.azurerm_windows_virtual_machine.example will be created
+  + resource "azurerm_windows_virtual_machine" "example" {
+      + admin_password             = (sensitive value)
+      + admin_username             = "adminuser"
+      + allow_extension_operations = true
+      + computer_name              = (known after apply)
+      + enable_automatic_updates   = true
+      + extensions_time_budget     = "PT1H30M"
+      + hotpatching_enabled        = false
+      + id                         = (known after apply)
+      + location                   = "westus"
+      + max_bid_price              = -1
+      + name                       = "example-machine"
+      + network_interface_ids      = (known after apply)
+      + patch_mode                 = "AutomaticByOS"
+      + platform_fault_domain      = -1
+      + priority                   = "Regular"
+      + private_ip_address         = (known after apply)
+      + private_ip_addresses       = (known after apply)
+      + provision_vm_agent         = true
+      + public_ip_address          = (known after apply)
+      + public_ip_addresses        = (known after apply)
+      + resource_group_name        = "rg1-123"
+      + size                       = "Standard_F2"
+      + virtual_machine_id         = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "WindowsServer"
+          + publisher = "MicrosoftWindowsServer"
+          + sku       = "2016-Datacenter"
+          + version   = "latest"
+        }
+    }
+
+Plan: 6 to add, 0 to change, 0 to destroy.
+module.call_module.azurerm_resource_group.example: Creating...
+module.call_module.azurerm_resource_group.example: Creation complete after 4s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resoumodule.call_module.azurerm_virtual_network.example: Creating...
+module.call_module.azurerm_public_ip.example: Creating...
+module.call_module.azurerm_public_ip.example: Still creating... [10s elapsed]
+module.call_module.azurerm_virtual_network.example: Still creating... [10s elapsed]
+module.call_module.azurerm_public_ip.example: Creation complete after 12s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1]
+module.call_module.azurerm_virtual_network.example: Creation complete after 15s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network]
+module.call_module.azurerm_subnet.mysubnet: Creating...
+module.call_module.azurerm_subnet.mysubnet: Creation complete after 10s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal]
+module.call_module.azurerm_network_interface.mynic: Creating...
+module.call_module.azurerm_network_interface.mynic: Creation complete after 7s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/networkInterfaces/example-nic]
+module.call_module.azurerm_windows_virtual_machine.example: Creating...
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [10s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [20s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [30s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [40s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [50s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [1m0s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [1m10s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Creation complete after 1m14s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Compute/virtualMachines/example-machine]
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+PS D:\practice_terraform\modules\call_module> terraform show
+# module.call_module.azurerm_network_interface.mynic:
+resource "azurerm_network_interface" "mynic" {
+    applied_dns_servers           = []
+    dns_servers                   = []
+    enable_accelerated_networking = false
+    enable_ip_forwarding          = false
+    id                            = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/networkInterfaces/example-nic"
+    internal_domain_name_suffix   = "xz5yeo455weuvlflkup4inlcqd.dx.internal.cloudapp.net"
+    location                      = "westus"
+    name                          = "example-nic"
+    private_ip_address            = "10.0.2.4"
+    private_ip_addresses          = [
+        "10.0.2.4",
+    ]
+    resource_group_name           = "rg1-123"
+
+    ip_configuration {
+        name                          = "internal"
+        primary                       = true
+        private_ip_address            = "10.0.2.4"
+        private_ip_address_allocation = "Dynamic"
+        private_ip_address_version    = "IPv4"
+        public_ip_address_id          = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1"
+        subnet_id                     = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal"
+    }
+}
+
+# module.call_module.azurerm_public_ip.example:
+resource "azurerm_public_ip" "example" {
+    allocation_method       = "Static"
+    id                      = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1"
+    idle_timeout_in_minutes = 4
+    ip_address              = "168.62.215.114"
+    ip_version              = "IPv4"
+    location                = "westus"
+    name                    = "acceptanceTestPublicIp1"
+    resource_group_name     = "rg1-123"
+    sku                     = "Basic"
+    sku_tier                = "Regional"
+}
+
+# module.call_module.azurerm_resource_group.example:
+resource "azurerm_resource_group" "example" {
+    id       = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123"
+    location = "westus"
+    name     = "rg1-123"
+}
+
+# module.call_module.azurerm_subnet.mysubnet:
+resource "azurerm_subnet" "mysubnet" {
+    address_prefixes                               = [
+        "10.0.2.0/24",
+    ]
+    enforce_private_link_endpoint_network_policies = false
+    enforce_private_link_service_network_policies  = false
+    id                                             = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal"
+    name                                           = "internal"
+    resource_group_name                            = "rg1-123"
+    virtual_network_name                           = "example-network"
+}
+
+# module.call_module.azurerm_virtual_network.example:
+resource "azurerm_virtual_network" "example" {
+    address_space           = [
+        "10.0.0.0/16",
+    ]
+    dns_servers             = []
+    flow_timeout_in_minutes = 0
+    guid                    = "3b827fbe-fddf-4a89-acab-551fe4356283"
+    id                      = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network"
+    location                = "westus"
+    name                    = "example-network"
+    resource_group_name     = "rg1-123"
+    subnet                  = []
+}
+
+# module.call_module.azurerm_windows_virtual_machine.example:
+resource "azurerm_windows_virtual_machine" "example" {
+    admin_password             = (sensitive value)
+    admin_username             = "adminuser"
+    allow_extension_operations = true
+    computer_name              = "example-machine"
+    enable_automatic_updates   = true
+    encryption_at_host_enabled = false
+    extensions_time_budget     = "PT1H30M"
+    hotpatching_enabled        = false
+    id                         = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Compute/virtualMachines/example-machine"
+    location                   = "westus"
+    max_bid_price              = -1
+    name                       = "example-machine"
+    network_interface_ids      = [
+        "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/networkInterfaces/example-nic",
+    ]
+    patch_mode                 = "AutomaticByOS"
+    platform_fault_domain      = -1
+    priority                   = "Regular"
+    private_ip_address         = "10.0.2.4"
+    private_ip_addresses       = [
+        "10.0.2.4",
+    provision_vm_agent         = true
+    public_ip_address          = "168.62.215.114"
+    public_ip_addresses        = [
+        "168.62.215.114",
+    ]
+    resource_group_name        = "rg1-123"
+    secure_boot_enabled        = false
+    size                       = "Standard_F2"
+    virtual_machine_id         = "91fd7084-c017-4ad9-bd21-af975dc60fd2"
+    vtpm_enabled               = false
+
+    os_disk {
+        caching                   = "ReadWrite"
+        disk_size_gb              = 127
+        name                      = "example-machine_OsDisk_1_12c11a0ad47f413aa51768105dd7110d"
+        storage_account_type      = "Standard_LRS"
+        write_accelerator_enabled = false
+    }
+
+    source_image_reference {
+        offer     = "WindowsServer"
+        publisher = "MicrosoftWindowsServer"
+        sku       = "2016-Datacenter"
+        version   = "latest"
+    }
+}
+PS D:\practice_terraform\modules\call_module> terraform destroy --auto-approve
+module.call_module.azurerm_resource_group.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123]
+module.call_module.azurerm_public_ip.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1]
+module.call_module.azurerm_virtual_network.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network]
+module.call_module.azurerm_subnet.mysubnet: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal]
+module.call_module.azurerm_network_interface.mynic: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/networkInterfaces/example-nic]
+module.call_module.azurerm_windows_virtual_machine.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Compute/virtualMachines/example-machine]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols: 
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.call_module.azurerm_network_interface.mynic will be destroyed
+  - resource "azurerm_network_interface" "mynic" {
+      - applied_dns_servers           = [] -> null
+      - dns_servers                   = [] -> null
+      - enable_accelerated_networking = false -> null
+      - enable_ip_forwarding          = false -> null
+      - id                            = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/networkInterfaces/example-nic" -> null
+      - internal_domain_name_suffix   = "xz5yeo455weuvlflkup4inlcqd.dx.internal.cloudapp.net" -> null
+      - location                      = "westus" -> null
+      - mac_address                   = "60-45-BD-02-72-BB" -> null
+      - name                          = "example-nic" -> null
+      - private_ip_address            = "10.0.2.4" -> null
+      - private_ip_addresses          = [
+          - "10.0.2.4",
+        ] -> null
+      - resource_group_name           = "rg1-123" -> null
+      - tags                          = {} -> null
+      - virtual_machine_id            = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Compute/virtualMachines/example-machine" -> null
+
+      - ip_configuration {
+          - name                          = "internal" -> null
+          - primary                       = true -> null
+          - private_ip_address            = "10.0.2.4" -> null
+          - private_ip_address_allocation = "Dynamic" -> null
+          - private_ip_address_version    = "IPv4" -> null
+          - public_ip_address_id          = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1" -> null
+          - subnet_id                     = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal" -> null
+        }
+    }
+
+  # module.call_module.azurerm_public_ip.example will be destroyed
+  - resource "azurerm_public_ip" "example" {
+      - allocation_method       = "Static" -> null
+      - id                      = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1" -> null
+      - idle_timeout_in_minutes = 4 -> null
+      - ip_address              = "168.62.215.114" -> null
+      - ip_tags                 = {} -> null
+      - ip_version              = "IPv4" -> null
+      - location                = "westus" -> null
+      - name                    = "acceptanceTestPublicIp1" -> null
+      - resource_group_name     = "rg1-123" -> null
+      - sku                     = "Basic" -> null
+      - sku_tier                = "Regional" -> null
+      - tags                    = {} -> null
+      - zones                   = [] -> null
+    }
+
+  # module.call_module.azurerm_resource_group.example will be destroyed
+  - resource "azurerm_resource_group" "example" {
+      - id       = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123" -> null
+      - location = "westus" -> null
+      - name     = "rg1-123" -> null
+      - tags     = {} -> null
+    }
+
+  # module.call_module.azurerm_subnet.mysubnet will be destroyed
+  - resource "azurerm_subnet" "mysubnet" {
+      - address_prefixes                               = [
+          - "10.0.2.0/24",
+        ] -> null
+      - enforce_private_link_endpoint_network_policies = false -> null
+      - enforce_private_link_service_network_policies  = false -> null
+      - id                                             = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal" -> null
+      - name                                           = "internal" -> null
+      - resource_group_name                            = "rg1-123" -> null
+      - service_endpoint_policy_ids                    = [] -> null
+      - service_endpoints                              = [] -> null
+      - virtual_network_name                           = "example-network" -> null
+    }
+
+  # module.call_module.azurerm_virtual_network.example will be destroyed
+  - resource "azurerm_virtual_network" "example" {
+      - address_space           = [
+          - "10.0.0.0/16",
+        ] -> null
+      - dns_servers             = [] -> null
+      - flow_timeout_in_minutes = 0 -> null
+      - guid                    = "3b827fbe-fddf-4a89-acab-551fe4356283" -> null
+      - id                      = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network" -> null
+      - location                = "westus" -> null
+      - name                    = "example-network" -> null
+      - resource_group_name     = "rg1-123" -> null
+      - subnet                  = [
+          - {
+              - address_prefix = "10.0.2.0/24"
+              - id             = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal"
+              - name           = "internal"
+              - security_group = ""
+            },
+        ] -> null
+      - tags                    = {} -> null
+    }
+
+  # module.call_module.azurerm_windows_virtual_machine.example will be destroyed
+  - resource "azurerm_windows_virtual_machine" "example" {
+      - admin_password             = (sensitive value) -> null
+      - admin_username             = "adminuser" -> null
+      - allow_extension_operations = true -> null
+      - computer_name              = "example-machine" -> null
+      - enable_automatic_updates   = true -> null
+      - encryption_at_host_enabled = false -> null
+      - extensions_time_budget     = "PT1H30M" -> null
+      - hotpatching_enabled        = false -> null
+      - id                         = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Compute/virtualMachines/example-machine" -> null
+      - location                   = "westus" -> null
+      - max_bid_price              = -1 -> null
+      - name                       = "example-machine" -> null
+      - network_interface_ids      = [
+          - "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/networkInterfaces/example-nic",
+        ] -> null
+      - patch_mode                 = "AutomaticByOS" -> null
+      - platform_fault_domain      = -1 -> null
+      - priority                   = "Regular" -> null
+      - private_ip_address         = "10.0.2.4" -> null
+      - private_ip_addresses       = [
+          - "10.0.2.4",
+        ] -> null
+      - provision_vm_agent         = true -> null
+      - public_ip_address          = "168.62.215.114" -> null
+      - public_ip_addresses        = [
+          - "168.62.215.114",
+        ] -> null
+      - resource_group_name        = "rg1-123" -> null
+      - secure_boot_enabled        = false -> null
+      - size                       = "Standard_F2" -> null
+      - tags                       = {} -> null
+      - virtual_machine_id         = "91fd7084-c017-4ad9-bd21-af975dc60fd2" -> null
+      - vtpm_enabled               = false -> null
+
+      - os_disk {
+          - caching                   = "ReadWrite" -> null
+          - disk_size_gb              = 127 -> null
+          - name                      = "example-machine_OsDisk_1_12c11a0ad47f413aa51768105dd7110d" -> null
+          - storage_account_type      = "Standard_LRS" -> null
+          - write_accelerator_enabled = false -> null
+        }
+
+      - source_image_reference {
+          - offer     = "WindowsServer" -> null
+          - publisher = "MicrosoftWindowsServer" -> null
+          - sku       = "2016-Datacenter" -> null
+          - version   = "latest" -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 6 to destroy.
+module.call_module.azurerm_windows_virtual_machine.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Compute/virtualMachines/example-machine]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...ompute/virtualMachines/example-machine, 10s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...ompute/virtualMachines/example-machine, 20s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...ompute/virtualMachines/example-machine, 30s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...ompute/virtualMachines/example-machine, 40s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...ompute/virtualMachines/example-machine, 50s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...ompute/virtualMachines/example-machine, 1m0s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Destruction complete after 1m1s
+module.call_module.azurerm_network_interface.mynic: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/networkInterfaces/example-nic]
+module.call_module.azurerm_network_interface.mynic: Destruction complete after 8s
+module.call_module.azurerm_subnet.mysubnet: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network/subnets/internal]
+module.call_module.azurerm_public_ip.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1]
+module.call_module.azurerm_subnet.mysubnet: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...works/example-network/subnets/internal, 10s elapsed]
+module.call_module.azurerm_public_ip.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...licIPAddresses/acceptanceTestPublicIp1, 10s elapsed]
+module.call_module.azurerm_subnet.mysubnet: Destruction complete after 12s
+module.call_module.azurerm_virtual_network.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123/providers/Microsoft.Network/virtualNetworks/example-network]
+module.call_module.azurerm_public_ip.example: Destruction complete after 13s
+module.call_module.azurerm_virtual_network.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...etwork/virtualNetworks/example-network, 10s elapsed]
+module.call_module.azurerm_virtual_network.example: Destruction complete after 13s
+module.call_module.azurerm_resource_group.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123, 10s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123, 20s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123, 30s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123, 40s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123, 50s elapsed]
+ps/rg1-123, 1m0s elapsed]
+ps/rg1-123, 1m10s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/rg1-123, 1m20s elapsed]
+module.call_module.azurerm_resource_group.example: Destruction complete after 1m23s
+
+Destroy complete! Resources: 6 destroyed.
+PS D:\practice_terraform\modules\call_module> terraform fmt
+main.tf
+PS D:\practice_terraform\modules\call_module> terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols: 
+  + create
+
+Terraform will perform the following actions:
+
+  # module.call_module.azurerm_network_interface.example will be created
+  + resource "azurerm_network_interface" "example" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "westeurope"
+      + mac_address                   = (known after apply)
+      + name                          = "maheshnic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "maheshrg"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # module.call_module.azurerm_resource_group.example will be created
+  + resource "azurerm_resource_group" "example" {
+      + id       = (known after apply)
+      + location = "westeurope"
+      + name     = "maheshrg"
+    }
+
+  # module.call_module.azurerm_subnet.example will be created
+  + resource "azurerm_subnet" "example" {
+      + address_prefixes                               = [
+          + "10.0.2.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "maheshsubnet"
+      + resource_group_name                            = "maheshrg"
+      + virtual_network_name                           = "maheshvnet"
+    }
+
+  # module.call_module.azurerm_virtual_network.example will be created
+  + resource "azurerm_virtual_network" "example" {
+      + address_space       = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "westeurope"
+      + name                = "maheshvnet"
+      + resource_group_name = "maheshrg"
+      + subnet              = (known after apply)
+    }
+
+  # module.call_module.azurerm_windows_virtual_machine.example will be created
+  + resource "azurerm_windows_virtual_machine" "example" {
+      + admin_password             = (sensitive value)
+      + admin_username             = "adminuser"
+      + allow_extension_operations = true
+      + computer_name              = (known after apply)
+      + enable_automatic_updates   = true
+      + extensions_time_budget     = "PT1H30M"
+      + hotpatching_enabled        = false
+      + id                         = (known after apply)
+      + location                   = "westeurope"
+      + max_bid_price              = -1
+      + name                       = "maheshvm"
+      + network_interface_ids      = (known after apply)
+      + patch_mode                 = "AutomaticByOS"
+      + platform_fault_domain      = -1
+      + priority                   = "Regular"
+      + private_ip_address         = (known after apply)
+      + private_ip_addresses       = (known after apply)
+      + provision_vm_agent         = true
+      + public_ip_address          = (known after apply)
+      + public_ip_addresses        = (known after apply)
+      + resource_group_name        = "maheshrg"
+      + size                       = "Standard_F2"
+      + virtual_machine_id         = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "WindowsServer"
+          + publisher = "MicrosoftWindowsServer"
+          + sku       = "2016-Datacenter"
+          + version   = "latest"
+        }
+    }
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------------------------------------------------------------------------ 
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform   
+apply" now.
+PS D:\practice_terraform\modules\call_module> terraform apply -auto-approve
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.call_module.azurerm_network_interface.example will be created
+  + resource "azurerm_network_interface" "example" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "westeurope"
+      + mac_address                   = (known after apply)
+      + name                          = "maheshnic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "maheshrg"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # module.call_module.azurerm_resource_group.example will be created
+  + resource "azurerm_resource_group" "example" {
+      + id       = (known after apply)
+      + location = "westeurope"
+      + name     = "maheshrg"
+    }
+
+  # module.call_module.azurerm_subnet.example will be created
+  + resource "azurerm_subnet" "example" {
+      + address_prefixes                               = [
+          + "10.0.2.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "maheshsubnet"
+      + resource_group_name                            = "maheshrg"
+      + virtual_network_name                           = "maheshvnet"
+    }
+
+  # module.call_module.azurerm_virtual_network.example will be created
+  + resource "azurerm_virtual_network" "example" {
+      + address_space       = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "westeurope"
+      + name                = "maheshvnet"
+      + resource_group_name = "maheshrg"
+      + subnet              = (known after apply)
+    }
+
+  # module.call_module.azurerm_windows_virtual_machine.example will be created
+  + resource "azurerm_windows_virtual_machine" "example" {
+      + admin_password             = (sensitive value)
+      + admin_username             = "adminuser"
+      + allow_extension_operations = true
+      + computer_name              = (known after apply)
+      + enable_automatic_updates   = true
+      + extensions_time_budget     = "PT1H30M"
+      + hotpatching_enabled        = false
+      + id                         = (known after apply)
+      + location                   = "westeurope"
+      + max_bid_price              = -1
+      + name                       = "maheshvm"
+      + network_interface_ids      = (known after apply)
+      + patch_mode                 = "AutomaticByOS"
+      + platform_fault_domain      = -1
+      + priority                   = "Regular"
+      + private_ip_address         = (known after apply)
+      + private_ip_addresses       = (known after apply)
+      + provision_vm_agent         = true
+      + public_ip_address          = (known after apply)
+      + public_ip_addresses        = (known after apply)
+      + resource_group_name        = "maheshrg"
+      + size                       = "Standard_F2"
+      + virtual_machine_id         = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "WindowsServer"
+          + publisher = "MicrosoftWindowsServer"
+          + sku       = "2016-Datacenter"
+          + version   = "latest"
+        }
+    }
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+module.call_module.azurerm_resource_group.example: Creating...
+module.call_module.azurerm_resource_group.example: Creation complete after 4s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg]
+module.call_module.azurerm_virtual_network.example: Creating...
+module.call_module.azurerm_virtual_network.example: Creation complete after 9s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet]
+module.call_module.azurerm_subnet.example: Creating...
+module.call_module.azurerm_subnet.example: Creation complete after 10s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet/subnets/maheshsubnet]
+module.call_module.azurerm_network_interface.example: Creating...
+module.call_module.azurerm_network_interface.example: Creation complete after 6s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/networkInterfaces/maheshnic]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [10s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [20s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [30s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [40s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [50s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [1m0s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still creating... [1m10s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Creation complete after 1m13s [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Compute/virtualMachines/maheshvm]
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+PS D:\practice_terraform\modules\call_module> terraform destroy --auto-approve
+module.call_module.azurerm_resource_group.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg]
+module.call_module.azurerm_virtual_network.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet]
+module.call_module.azurerm_subnet.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet/subnets/maheshsubnet]
+module.call_module.azurerm_network_interface.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/networkInterfaces/maheshnic]
+module.call_module.azurerm_windows_virtual_machine.example: Refreshing state... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Compute/virtualMachines/maheshvm]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols: 
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.call_module.azurerm_network_interface.example will be destroyed
+  - resource "azurerm_network_interface" "example" {
+      - applied_dns_servers           = [] -> null
+      - dns_servers                   = [] -> null
+      - enable_accelerated_networking = false -> null
+      - enable_ip_forwarding          = false -> null
+      - id                            = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/networkInterfaces/maheshnic" -> null
+      - internal_domain_name_suffix   = "ld4t3yo31orurh3g5an2efsk2d.ax.internal.cloudapp.net" -> null
+      - location                      = "westeurope" -> null
+      - mac_address                   = "00-22-48-7F-72-72" -> null
+      - name                          = "maheshnic" -> null
+      - private_ip_address            = "10.0.2.4" -> null
+      - private_ip_addresses          = [
+          - "10.0.2.4",
+        ] -> null
+      - resource_group_name           = "maheshrg" -> null
+      - tags                          = {} -> null
+      - virtual_machine_id            = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Compute/virtualMachines/maheshvm" -> null
+
+      - ip_configuration {
+          - name                          = "internal" -> null
+          - primary                       = true -> null
+          - private_ip_address            = "10.0.2.4" -> null
+          - private_ip_address_allocation = "Dynamic" -> null
+          - private_ip_address_version    = "IPv4" -> null
+          - subnet_id                     = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet/subnets/maheshsubnet" -> null
+        }
+    }
+
+  # module.call_module.azurerm_resource_group.example will be destroyed
+  - resource "azurerm_resource_group" "example" {
+      - id       = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg" -> null
+      - location = "westeurope" -> null
+      - name     = "maheshrg" -> null
+      - tags     = {} -> null
+    }
+
+  # module.call_module.azurerm_subnet.example will be destroyed
+  - resource "azurerm_subnet" "example" {
+      - address_prefixes                               = [
+          - "10.0.2.0/24",
+        ] -> null
+      - enforce_private_link_endpoint_network_policies = false -> null
+      - enforce_private_link_service_network_policies  = false -> null
+      - id                                             = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet/subnets/maheshsubnet" -> null
+      - name                                           = "maheshsubnet" -> null
+      - resource_group_name                            = "maheshrg" -> null
+      - service_endpoint_policy_ids                    = [] -> null
+      - service_endpoints                              = [] -> null
+      - virtual_network_name                           = "maheshvnet" -> null
+    }
+
+  # module.call_module.azurerm_virtual_network.example will be destroyed
+  - resource "azurerm_virtual_network" "example" {
+      - address_space           = [
+          - "10.0.0.0/16",
+        ] -> null
+      - dns_servers             = [] -> null
+      - flow_timeout_in_minutes = 0 -> null
+      - guid                    = "e13efd58-dbdd-48a3-9fa6-f81bc2164ae3" -> null
+      - id                      = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet" -> null
+      - location                = "westeurope" -> null
+      - name                    = "maheshvnet" -> null
+      - resource_group_name     = "maheshrg" -> null
+      - subnet                  = [
+          - {
+              - address_prefix = "10.0.2.0/24"
+              - id             = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet/subnets/maheshsubnet"
+              - name           = "maheshsubnet"
+              - security_group = ""
+            },
+        ] -> null
+      - tags                    = {} -> null
+    }
+
+  # module.call_module.azurerm_windows_virtual_machine.example will be destroyed
+  - resource "azurerm_windows_virtual_machine" "example" {
+      - admin_password             = (sensitive value) -> null
+      - admin_username             = "adminuser" -> null
+      - allow_extension_operations = true -> null
+      - computer_name              = "maheshvm" -> null
+      - enable_automatic_updates   = true -> null
+      - encryption_at_host_enabled = false -> null
+      - extensions_time_budget     = "PT1H30M" -> null
+      - hotpatching_enabled        = false -> null
+      - id                         = "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Compute/virtualMachines/maheshvm" -> null
+      - location                   = "westeurope" -> null
+      - max_bid_price              = -1 -> null
+      - name                       = "maheshvm" -> null
+      - network_interface_ids      = [
+          - "/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/networkInterfaces/maheshnic",
+        ] -> null
+      - patch_mode                 = "AutomaticByOS" -> null
+      - platform_fault_domain      = -1 -> null
+      - priority                   = "Regular" -> null
+      - private_ip_address         = "10.0.2.4" -> null
+      - private_ip_addresses       = [
+          - "10.0.2.4",
+        ] -> null
+      - provision_vm_agent         = true -> null
+      - public_ip_addresses        = [] -> null
+      - resource_group_name        = "maheshrg" -> null
+      - secure_boot_enabled        = false -> null
+      - size                       = "Standard_F2" -> null
+      - tags                       = {} -> null
+      - virtual_machine_id         = "343a66a7-1565-4bad-98d0-555cac140b92" -> null
+      - vtpm_enabled               = false -> null
+
+      - os_disk {
+          - caching                   = "ReadWrite" -> null
+          - disk_size_gb              = 127 -> null
+          - name                      = "maheshvm_OsDisk_1_cee2622824af4d859abab59ad03806c1" -> null
+          - storage_account_type      = "Standard_LRS" -> null
+          - write_accelerator_enabled = false -> null
+        }
+
+      - source_image_reference {
+          - offer     = "WindowsServer" -> null
+          - publisher = "MicrosoftWindowsServer" -> null
+          - sku       = "2016-Datacenter" -> null
+          - version   = "latest" -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 5 to destroy.
+module.call_module.azurerm_windows_virtual_machine.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Compute/virtualMachines/maheshvm]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...osoft.Compute/virtualMachines/maheshvm, 10s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...osoft.Compute/virtualMachines/maheshvm, 20s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...osoft.Compute/virtualMachines/maheshvm, 30s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...osoft.Compute/virtualMachines/maheshvm, 40s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...osoft.Compute/virtualMachines/maheshvm, 50s elapsed]
+module.call_module.azurerm_windows_virtual_machine.example: Destruction complete after 53s
+module.call_module.azurerm_network_interface.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/networkInterfaces/maheshnic]
+module.call_module.azurerm_network_interface.example: Destruction complete after 7s
+module.call_module.azurerm_subnet.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet/subnets/maheshsubnet]
+module.call_module.azurerm_subnet.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...tworks/maheshvnet/subnets/maheshsubnet, 10s elapsed]
+module.call_module.azurerm_subnet.example: Destruction complete after 12s
+module.call_module.azurerm_virtual_network.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg/providers/Microsoft.Network/virtualNetworks/maheshvnet]
+module.call_module.azurerm_virtual_network.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-...oft.Network/virtualNetworks/maheshvnet, 10s elapsed]
+module.call_module.azurerm_virtual_network.example: Destruction complete after 13s
+module.call_module.azurerm_resource_group.example: Destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg, 10s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg, 20s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg, 30s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroumodule.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg, 50s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg, 1m0s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg, 1m10s elapsed]
+module.call_module.azurerm_resource_group.example: Still destroying... [id=/subscriptions/0fd8d403-ae7b-43e4-840a-5c4ff327c4cf/resourceGroups/maheshrg, 1m20s elapsed]
+module.call_module.azurerm_resource_group.example: Destruction complete after 1m22s
+
+Destroy complete! Resources: 5 destroyed.
+PS D:\practice_terraform\modules\call_module> terraform test
+?
+¦ Warning: The "terraform test" command is experimental
+¦
+¦ We'd like to invite adventurous module authors to write integration tests for their modules using this command, but all of the behaviors 
+¦ of this command are currently experimental and may change based on feedback.
+¦
+¦ For more information on the testing experiment, including ongoing research goals and avenues for feedback, see:
+¦     https://www.terraform.io/docs/language/modules/testing-experiment.html
+?
+No tests defined. This module doesn't have any test suites to run.
+
+PS D:\practice_terraform\modules\call_module>
